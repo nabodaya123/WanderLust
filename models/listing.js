@@ -1,23 +1,32 @@
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
-    title:{
-        type:String,
-        required:true,
+  title: {
+    type: String,
+    required: true,
+  },
+
+  description: String,
+
+  image: {
+    filename: {
+      type: String,
+      default: "listingimage",
     },
-    description:String,
-    image:{
-        type:String,
-        default:
-            "https://www.vecteezy.com/photo/11826370-maldives-islands-ocean-tropical-beach-exotic-sea-lagoon-palm-trees-over-white-sand-idyllic-nature-landscape-amazing-beach-scenic-shore-bright-tropical-summer-sun-and-blue-sky-with-light-clouds",
-        set: (v)=> v ===""
-        ?"https://www.vecteezy.com/photo/11826370-maldives-islands-ocean-tropical-beach-exotic-sea-lagoon-palm-trees-over-white-sand-idyllic-nature-landscape-amazing-beach-scenic-shore-bright-tropical-summer-sun-and-blue-sky-with-light-clouds":v,
+    url: {
+      type: String,
+      default:
+        "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=800&q=60",
     },
-    price:Number,
-    location:String,
-    country:String,
+  },
+
+  price: Number,
+  location: String,
+  country: String,
 });
 
-const Listing = mongoose.model("Listing",listingSchema);
+const Listing = mongoose.model("Listing", listingSchema);
+
 module.exports = Listing;
